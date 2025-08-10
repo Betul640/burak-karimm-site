@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>💖 Bizim Küçük Sitemiz</title>
+  <meta name="description" content="Sana özel küçük bir sürpriz." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💖</text></svg>">
+  <meta property="og:title" content="💖 Bizim Küçük Sitemiz">
+  <meta property="og:description" content="Sana özel küçük bir sürpriz.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/cover.jpg">
+  <style>
+    :root{
+      --ana-renk:#ff4d6d;
+      --ikincil:#ffd6e0;
+      --metin:#222;
+      --arka:#fff;
+      --radius:18px;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{ --arka:#0f0f13; --metin:#e9e9ee; --ikincil:#2a2530; }
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color:var(--metin);
+      background: var(--arka);
+      line-height:1.6;
+    }
+    .wrap{max-width:980px; margin:0 auto; padding:24px}
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.6), rgba(255,255,255,.3));
+      backdrop-filter: blur(8px);
+      border:1px solid rgba(0,0,0,.06);
+      border-radius: var(--radius);
+      padding: clamp(16px, 3vw, 28px);
+    }
+    @media (prefers-color-scheme: dark){
+      .card{ background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border-color: rgba(255,255,255,.08);}
+    }
+    header{ padding: 64px 0 24px; }
+    .title{ font-weight:800; font-size: clamp(28px, 6vw, 56px); margin:0 0 8px; }
+    .subtitle{opacity:.8; margin:0 0 24px}
+    .btn{
+      display:inline-block; padding:12px 18px; border-radius:12px; font-weight:700;
+      background: var(--ana-renk); color:white;
+    }
+    section{ margin: 28px 0 }
+    h2{ margin:0 0 12px; font-size: clamp(20px, 3.8vw, 28px); }
+    .grid{ display:grid; gap:18px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .gallery img{ border-radius:14px; aspect-ratio: 4/3; object-fit:cover }
+    footer{ margin:34px 0 60px; text-align:center; opacity:.7; font-size:14px }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <h1 class="title">Merhaba Karımm, bu site sadece senin için 💖</h1>
+    <p class="subtitle">Anılarımız, sana yazdığım mektup ve özel günümüze geri sayım burada.</p>
+    <p><a class="btn" href="#mektup">Mektubu Aç</a></p>
+  </header>
+  <main class="wrap">
+    <section class="card">
+      <h2>Bizim Hikâyemiz</h2>
+      <div class="grid gallery">
+        <img src="images/1.jpg" alt="Birlikte çekilmiş fotoğrafımız">
+      </div>
+    </section>
+    <section id="mektup" class="card">
+      <h2>Bir Mektup</h2>
+      <p>Seninle her şey başka… Ay ışığında bile gülüşün daha parlak, kalbim daha hızlı atıyor. Bir ömür değil, bin ömür verseler yine seninle başlamak isterdim her güne… 💌</p>
+      <p style="margin-top:14px"><a class="btn" href="https://open.spotify.com/episode/5H5wlWFREnyUhkaj0NjdfO?si=wFzNvsiwQfu7oR-DJF3yPQ" target="_blank">Şarkımızı Aç</a></p>
+    </section>
+    <section class="card">
+      <h2>Özel Günümüze Geri Sayım</h2>
+      <p id="countdown" style="font-size:24px;font-weight:bold;"></p>
+    </section>
+  </main>
+  <footer class="wrap">
+    <small>© 2025 Burak — Bu sayfa aşk ile yapıldı.</small>
+  </footer>
+  <script>
+    const hedef = new Date("2025-04-01T02:36:00");
+    function tik(){
+      const now = new Date();
+      let diff = Math.max(0, hedef - now);
+      const gun = Math.floor(diff / (1000*60*60*24));
+      diff -= gun*(1000*60*60*24);
+      const saat = Math.floor(diff / (1000*60*60));
+      diff -= saat*(1000*60*60);
+      const dk = Math.floor(diff / (1000*60));
+      diff -= dk*(1000*60);
+      const sn = Math.floor(diff / 1000);
+      document.getElementById("countdown").textContent = `${gun} Gün ${saat} Saat ${dk} Dakika ${sn} Saniye`;
+    }
+    tik(); setInterval(tik, 1000);
+  </script>
+</body>
+</html>
