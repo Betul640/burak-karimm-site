@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Burak ♥ Karımm — Ay Işığında Bezenmiş Aşk</title>
+  <meta name="description" content="Burak'tan sevgilisine küçük bir sürpriz.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💖</text></svg>">
+  <style>
+    :root{ --ana:#ff4d6d; --ikincil:#ffe3ea; --metin:#eaeaf0; --arka:#0f0f13; --r:18px; }
+    *{box-sizing:border-box}
+    body{ margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; color:var(--metin); background: radial-gradient(1200px 600px at 10% 0%, #181824, #0f0f13); line-height:1.6; }
+    .wrap{ max-width:980px; margin:0 auto; padding:24px }
+    .card{ background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius: var(--r); padding: clamp(16px, 3vw, 28px); }
+    header{ padding:64px 0 24px }
+    h1{ margin:0 0 8px; font-size: clamp(28px, 6vw, 56px); letter-spacing:-.02em; color: var(--ikincil) }
+    .sub{ opacity:.85; margin:0 0 20px }
+    .btn{ display:inline-block; background:var(--ana); color:#fff; padding:12px 18px; border-radius:12px; font-weight:700; text-decoration:none }
+    section{ margin:28px 0 }
+    h2{ margin:0 0 12px; font-size: clamp(20px, 3.8vw, 28px) }
+    .gallery img{ width:100%; max-width:720px; border-radius:14px; aspect-ratio: 4/3; object-fit: cover; display:block; margin:auto }
+    .muted{ opacity:.7 }
+    footer{ margin:34px 0 60px; text-align:center; opacity:.7; font-size:14px }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <h1>Merhaba Karımm 💖</h1>
+    <p class="sub">Anılarımız, sana yazdığım mektup ve özel anımıza geri sayım burada.</p>
+    <p><a class="btn" href="#mektup">Mektubu Aç</a></p>
+  </header>
+
+  <main class="wrap">
+    <!-- FOTOĞRAF -->
+    <section class="card">
+      <h2>Biz</h2>
+      <img src="images/1.jpg" alt="Burak ve Karımm" onerror="this.insertAdjacentHTML('afterend','<p class=muted>Fotoğraf bulunamadı. Lütfen <b>images/1.jpg</b> dosyasının yüklü olduğundan emin ol.</p>')">
+    </section>
+
+    <!-- MEKTUP -->
+    <section id="mektup" class="card">
+      <h2>Bir Mektup</h2>
+      <p>Seninle her şey başka… Ay ışığında bile gülüşün daha parlak, kalbim daha hızlı atıyor. Bir ömür değil, bin ömür verseler yine seninle başlamak isterdim her güne… 💌</p>
+      <p style="margin-top:14px"><a class="btn" href="https://open.spotify.com/episode/5H5wlWFREnyUhkaj0NjdfO?si=wFzNvsiwQfu7oR-DJF3yPQ" target="_blank" rel="noreferrer">Şarkımızı Aç</a></p>
+    </section>
+
+    <!-- GERİ SAYIM -->
+    <section class="card" id="sayac">
+      <h2>Özel Anımıza Geri Sayım</h2>
+      <p id="cd" style="font-size:24px;font-weight:800">Yükleniyor…</p>
+      <p class="muted">Tarih: 01.04.2026 02:36</p>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <small>© 2025 Burak — Bu sayfa aşk ile yapıldı.</small>
+  </footer>
+
+  <script>
+    // Yerel saatine göre 1 Nisan 2026 02:36
+    const hedef = new Date("2026-04-01T02:36:00");
+    function t(){
+      const now = new Date();
+      let diff = hedef - now;
+      const el = document.getElementById('cd');
+      if (isNaN(hedef.getTime())) { el.textContent = "Tarih hatası"; return; }
+      if (diff <= 0){ el.textContent = "Geldi!"; return; }
+      const g = Math.floor(diff/86400000); diff -= g*86400000;
+      const s = Math.floor(diff/3600000);  diff -= s*3600000;
+      const d = Math.floor(diff/60000);    diff -= d*60000;
+      const sn= Math.floor(diff/1000);
+      el.textContent = `${g} Gün ${s} Saat ${d} Dakika ${sn} Saniye`;
+    }
+    t(); setInterval(t, 1000);
+  </script>
+</body>
+</html>
